@@ -1,6 +1,8 @@
 """Final version of wordle with 6 chances."""
 
+
 __author__ = "730475197"
+
 
 def contains_char(word: str, char: str) -> bool:
     """Checks for character in the word."""
@@ -11,8 +13,7 @@ def contains_char(word: str, char: str) -> bool:
             return True
         else:
             i += 1
-    if i == len(word):
-        return False
+    return False
 
 
 def emojified(guess: str, secret: str) -> str:
@@ -26,7 +27,7 @@ def emojified(guess: str, secret: str) -> str:
     i: int = 0
 
     while i < len(secret):
-        if contains_char(secret, guess[i]) == True:
+        if contains_char(secret, guess[i]) is True:
             alt: int = 0
             while i < int(len(secret)) and alt < len(secret):
                 if guess[i] == secret[i]:
@@ -44,14 +45,14 @@ def emojified(guess: str, secret: str) -> str:
 
 
 def input_guess(a: int) -> str:
-    """ Makes sure word is the required length of letters and returns word.""" 
+    """Makes sure word is the required length of letters and returns word.""" 
     ans: bool = True
-    guess: str = input("Enter a 5 character word: ") 
+    guess: str = input(f"Enter a {a} character word: ") 
     while ans:
         if len(guess) == a:
             ans = False
         else:
-            another_g: str = input("That wasn't 5 chars! Try again: ")
+            another_g: str = input(f"That wasn't {a} chars! Try again: ")
             guess = another_g
     return guess
 
@@ -80,5 +81,7 @@ def main() -> None:
                 print(emojified(guess_word, secret))
                 print(f"You won in {turn}/6 turns!")
 
+
 if __name__ == "__main__":
     main()
+
