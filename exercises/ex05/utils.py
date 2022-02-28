@@ -1,7 +1,7 @@
 """A list of functions to be tested."""
 
 
-def only_evens(a_list: list[int]) -> list[int]:               # inp stands for input
+def only_evens(a_list: list[int]) -> list[int]:
     """Returns even numbers only given a list of numbers."""
     xs: list[int] = list()
     for x in a_list:
