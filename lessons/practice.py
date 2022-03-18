@@ -19,3 +19,9 @@
 my: dict[str, int] = {"4":6, "7":8, "9":0, "1":2}
 
 print(len(my))
+
+
+    # for z in freq:
+    #     if freq[z] == big_numb:
+    #         biggest_color = z
+    return biggest_color

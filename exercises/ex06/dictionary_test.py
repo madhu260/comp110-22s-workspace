@@ -2,11 +2,11 @@
 
 __author__ = "730475197"
 
-from dictionary import invert, favorite_colors, count
+from dictionary import invert, favorite_color, count
 
 
 def test_invert_two_same() -> None:
-    """When the keys and values are the same"""
+    """When the keys and values are the same."""
     dict_a: dict[str, str] = {"a": "a", "b": "b", "c": "c", "d": "d", "e": "e", "f": "f"}
     assert invert(dict_a) == {"a": "a", "b": "b", "c": "c", "d": "d", "e": "e", "f": "f"}
 
@@ -23,22 +23,22 @@ def test_invert_use_2() -> None:
     assert invert(dict_a) == {"z": "26", "y": "25", "x": "24", "w": "23", "v": "22"}
 
 
-def test_favorite_colors_empty() -> None:
+def test_favorite_color_empty() -> None:
     """When the dictionary is empty."""
     dict_empty: dict[str, str] = {}
-    assert favorite_colors(dict_empty) == ""
+    assert favorite_color(dict_empty) == ""
 
 
-def test_favorite_colors_use_1() -> None:
+def test_favorite_color_use_1() -> None:
     """Normal usage to find most popular favorite color given a dictionary."""
     dict_colors: dict[str, str] = {"Steph": "pink", "Chris": "blue", "Maddy": "pink", "Eve": "yellow", "Leo": "purple"}
-    assert favorite_colors(dict_colors) == "pink"
+    assert favorite_color(dict_colors) == "pink"
 
 
-def test_favorite_colors_use_2() -> None:
+def test_favorite_color_use_2() -> None:
     """Normal usage to find most popular favorite color given a different dictionary."""
     dict_colors: dict[str, str] = {"Steph": "blue", "Eve": "purple", "Maddy": "purple", "Leo": "blue", "Chris": "purple"}
-    assert favorite_colors(dict_colors) == "purple"
+    assert favorite_color(dict_colors) == "purple"
 
 
 def test_count_empty() -> None:

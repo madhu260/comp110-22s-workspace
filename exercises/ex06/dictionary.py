@@ -23,8 +23,8 @@ def invert(dic_1: dict[str, str]) -> dict[str, str]:
     return inverted
 
 
-def favorite_colors(dic_a: dict[str, str]) -> str:
-    """Returns most favorite color"""
+def favorite_color(dic_a: dict[str, str]) -> list[str]:
+    """Returns most favorite color."""
     colors: list[str] = []                          # list with colors
     for key in dic_a:                           
         colors.append(dic_a[key])                   # list with colors
@@ -39,7 +39,7 @@ def favorite_colors(dic_a: dict[str, str]) -> str:
             else:                                   # move on to next item
                 i += 1
         freq[x] = count
-    biggest_color: str = ""
+    # biggest_color: str = ""
     value_of_freq: list[int] = []
     for key_2 in freq:
         value_of_freq.append(freq[key_2])
@@ -47,13 +47,16 @@ def favorite_colors(dic_a: dict[str, str]) -> str:
     for y in value_of_freq:
         if y > big_numb:
             big_numb = y
-    for z in freq:
-        if freq[z] == big_numb:
-            biggest_color = z
-    return biggest_color
+    a = 0
+    list_ans: list[str] = []
+    while a < len(colors):
+        if freq[colors[a]] == big_numb:
+            list_ans.append(colors[a])
+    return list_ans
 
 
 def count(list_a: list[str]) -> dict[str, int]:
+    """Finds the frequency of the items in a given list."""
     freq: dict[str, int] = {}                       
     for x in list_a:
         i: int = 0  
