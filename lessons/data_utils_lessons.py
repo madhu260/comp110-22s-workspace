@@ -6,8 +6,8 @@ from csv import DictReader
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
     """Read rows of csv into a 'table'."""
-    result: list[dict[str, str]] = []
-    
+    result: list[dict[str, str]] = []    
+
     # Open a handle to the data file
     file_handle = open(filename, "r", encoding="utf8")
     
@@ -39,5 +39,4 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
     first_row: dict[str, str] = row_table[0]
     for column in first_row:
         result[column] = column_values(row_table, column)
-
     return result
