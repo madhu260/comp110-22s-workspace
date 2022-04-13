@@ -1,23 +1,24 @@
-"""Dictionary related utility functions."""
+"""Utility functions for CSV files."""
 
-__author__ = "730475197"
 
 from csv import DictReader
 
-# Define your functions below
-
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
-    """Read rows of csv into a table."""
-    result: list[dict[str, str]] = []
-    
+    """Read rows of csv into a 'table'."""
+    result: list[dict[str, str]] = []    
+
+    # Open a handle to the data file
     file_handle = open(filename, "r", encoding="utf8")
     
+    # Read data file as CSV rather than just strings
     csv_reader = DictReader(file_handle)
     
+    # Read each row of CSV line by line
     for row in csv_reader:
         result.append(row)
 
+    # Close the file when we're done, to free its resources.
     file_handle.close()
 
     return result
@@ -38,7 +39,6 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
     first_row: dict[str, str] = row_table[0]
     for column in first_row:
         result[column] = column_values(row_table, column)
-
     return result
 
 
@@ -46,7 +46,7 @@ def head(a_dict: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     """Refers to top few rows of a table."""
     result: dict[str, list[str]] = dict()
     for column in a_dict:
-        if n > len(a_dict):
+        if n > len(a_dict[column]):
             n = len(a_dict)
         a_list: list[str] = []
         given_list: list[str] = a_dict[column]
@@ -64,24 +64,6 @@ def select(a_dict: dict[str, list[str]], a_list: list[str]) -> dict[str, list[st
     return result
 
 
-def concat(dict_a: dict[str, list[str]], dict_b: dict[str, list[str]]) -> dict[str, list[str]]:
-    """Produces a new column-based table with two column-based tables combined."""
-    result: dict[str, list[str]] = dict()
-    
-    for column in dict_a:
-        result[column] = dict_a[column]
-    for columns in dict_b:
-        result[columns] = dict_b[columns]
-    keys_list_a = list(dict_a.keys())
-    keys_list_b = list(dict_b.keys())
-    for a_key in keys_list_a:
-        for diff_key in keys_list_b:
-            if a_key == diff_key:
-                result[a_key] = dict_a[a_key] + dict_b[diff_key]
-
-    return result
-
-
 def count(values: list[str]) -> dict[str, int]:
     """Finds the frequency of the items in a given list."""
     result: dict[str, int] = {}                       
@@ -90,4 +72,21 @@ def count(values: list[str]) -> dict[str, int]:
             result[x] += 1
         else:
             result[x] = 1
+    return result
+
+
+def support(list_1: list[str], list_2: list[str]) -> list[str]:
+    "If 2 lists have "
+    result: list[str] = []
+    for x in range(len(list_1)):
+        if int(list_1[x]) >= 5:                 # compare high note taking
+            if int(list_2[x]) >= 5:
+                result.append("yes")
+            else:
+                result.append("no")
+        else:
+            if int(list_2[x]) >= 5:
+                result.append("no")
+            else:
+                result.append("yes")
     return result
